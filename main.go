@@ -15,9 +15,9 @@ import (
 	"github.com/mailhog/MailHog-UI/assets"
 	cfgui "github.com/mailhog/MailHog-UI/config"
 	"github.com/mailhog/MailHog-UI/web"
-	cfgcom "github.com/mailhog/MailHog/config"
 	"github.com/mailhog/http"
 	"github.com/mailhog/mhsendmail/cmd"
+	cfgcom "github.com/siteworxpro/MailHog/config"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -100,25 +100,3 @@ func main() {
 	<-exitCh
 	log.Printf("Received exit signal")
 }
-
-/*
-
-Add some random content to the end of this file, hopefully tricking GitHub
-into recognising this as a Go repo instead of Makefile.
-
-A gopher, ASCII art style - borrowed from
-https://gist.github.com/belbomemo/b5e7dad10fa567a5fe8a
-
-          ,_---~~~~~----._
-   _,,_,*^____      _____``*g*\"*,
-  / __/ /'     ^.  /      \ ^@q   f
- [  @f | @))    |  | @))   l  0 _/
-  \`/   \~____ / __ \_____/    \
-   |           _l__l_           I
-   }          [______]           I
-   ]            | | |            |
-   ]             ~ ~             |
-   |                            |
-    |                           |
-
-*/
