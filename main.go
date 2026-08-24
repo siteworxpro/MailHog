@@ -9,10 +9,10 @@ import (
 
 	"github.com/gorilla/pat"
 	"github.com/ian-kent/go-log/log"
-	"github.com/mailhog/http"
 	cfgcom "github.com/siteworxpro/MailHog/config"
 	"github.com/siteworxpro/MailHog/server/api"
 	cfgapi "github.com/siteworxpro/MailHog/server/config"
+	"github.com/siteworxpro/MailHog/server/mailhoghttp"
 	"github.com/siteworxpro/MailHog/server/smtp"
 	"github.com/siteworxpro/MailHog/ui/assets"
 	cfgui "github.com/siteworxpro/MailHog/ui/config"

@@ -8,9 +8,9 @@ import (
 	"github.com/gorilla/pat"
 	"github.com/ian-kent/go-log/log"
 	"github.com/siteworxpro/MailHog/server/config"
+	"github.com/siteworxpro/MailHog/server/data"
 	"github.com/siteworxpro/MailHog/server/monkey"
 	"github.com/siteworxpro/MailHog/server/websockets"
-	"github.com/mailhog/data"
 )
 
 // APIv2 implements version 2 of the MailHog API

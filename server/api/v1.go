@@ -12,8 +12,8 @@ import (
 	"github.com/gorilla/pat"
 	"github.com/ian-kent/go-log/log"
 	"github.com/siteworxpro/MailHog/server/config"
-	"github.com/mailhog/data"
-	"github.com/mailhog/storage"
+	"github.com/siteworxpro/MailHog/server/data"
+	"github.com/siteworxpro/MailHog/server/storage"
 
 	"github.com/ian-kent/goose"
 )

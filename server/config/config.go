@@ -7,9 +7,9 @@ import (
 	"log"
 
 	"github.com/ian-kent/envconf"
+	"github.com/siteworxpro/MailHog/server/data"
 	"github.com/siteworxpro/MailHog/server/monkey"
-	"github.com/mailhog/data"
-	"github.com/mailhog/storage"
+	"github.com/siteworxpro/MailHog/server/storage"
 )
 
 // DefaultConfig is the default config

@@ -9,13 +9,10 @@ require (
 	github.com/ian-kent/go-log v0.0.0-20160113211217-5731446c36ab
 	github.com/ian-kent/goose v0.0.0-20141221090059-c3541ea826ad
 	github.com/ian-kent/linkio v0.0.0-20170807205755-97566b872887
-	github.com/mailhog/data v1.0.1
-	github.com/mailhog/http v1.0.1
-	github.com/mailhog/smtp v1.0.1
-	github.com/mailhog/storage v1.0.1
 	github.com/siteworxpro/mhsendmail v1.2.0
 	github.com/smartystreets/goconvey v1.8.1
 	golang.org/x/crypto v0.55.0
+	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
 )
 
 require (
@@ -32,6 +29,5 @@ require (
 	github.com/t-k/fluent-logger-golang v1.0.0 // indirect
 	github.com/tinylib/msgp v1.6.4 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
-	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
