@@ -11,9 +11,9 @@ require (
 	github.com/ian-kent/linkio v0.0.0-20170807205755-97566b872887
 	github.com/mailhog/data v1.0.1
 	github.com/mailhog/http v1.0.1
-	github.com/mailhog/mhsendmail v0.2.0
 	github.com/mailhog/smtp v1.0.1
 	github.com/mailhog/storage v1.0.1
+	github.com/siteworxpro/mhsendmail v1.2.0
 	github.com/smartystreets/goconvey v1.8.1
 	golang.org/x/crypto v0.55.0
 )
@@ -25,9 +25,9 @@ require (
 	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/jtolds/gls v4.20.0+incompatible // indirect
 	github.com/kr/pretty v0.3.1 // indirect
-	github.com/ogier/pflag v0.0.1 // indirect
 	github.com/philhofer/fwd v1.2.0 // indirect
 	github.com/smarty/assertions v1.15.0 // indirect
+	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/stretchr/testify v1.12.1 // indirect
 	github.com/t-k/fluent-logger-golang v1.0.0 // indirect
 	github.com/tinylib/msgp v1.6.4 // indirect

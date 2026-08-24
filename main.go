@@ -10,7 +10,6 @@ import (
 	"github.com/gorilla/pat"
 	"github.com/ian-kent/go-log/log"
 	"github.com/mailhog/http"
-	"github.com/mailhog/mhsendmail/cmd"
 	cfgcom "github.com/siteworxpro/MailHog/config"
 	"github.com/siteworxpro/MailHog/server/api"
 	cfgapi "github.com/siteworxpro/MailHog/server/config"
@@ -18,12 +17,13 @@ import (
 	"github.com/siteworxpro/MailHog/ui/assets"
 	cfgui "github.com/siteworxpro/MailHog/ui/config"
 	"github.com/siteworxpro/MailHog/ui/web"
+	"github.com/siteworxpro/mhsendmail/cmd"
 	"golang.org/x/crypto/bcrypt"
 )
 
-var apiconf *cfgapi.Config
-var uiconf *cfgui.Config
-var comconf *cfgcom.Config
+var configMap *cfgapi.Config
+var uiConf *cfgui.Config
+var comConf *cfgcom.Config
 var exitCh chan int
 var version string
 
@@ -32,12 +32,12 @@ func configure() {
 	cfgapi.RegisterFlags()
 	cfgui.RegisterFlags()
 	flag.Parse()
-	apiconf = cfgapi.Configure()
-	uiconf = cfgui.Configure()
-	comconf = cfgcom.Configure()
+	configMap = cfgapi.Configure()
+	uiConf = cfgui.Configure()
+	comConf = cfgcom.Configure()
 
-	apiconf.WebPath = comconf.WebPath
-	uiconf.WebPath = comconf.WebPath
+	configMap.WebPath = comConf.WebPath
+	uiConf.WebPath = comConf.WebPath
 }
 
 func main() {
@@ -74,28 +74,28 @@ func main() {
 
 	configure()
 
-	if comconf.AuthFile != "" {
-		http.AuthFile(comconf.AuthFile)
+	if comConf.AuthFile != "" {
+		http.AuthFile(comConf.AuthFile)
 	}
 
 	exitCh = make(chan int)
-	if uiconf.UIBindAddr == apiconf.APIBindAddr {
+	if uiConf.UIBindAddr == configMap.APIBindAddr {
 		cb := func(r gohttp.Handler) {
-			web.CreateWeb(uiconf, r.(*pat.Router), assets.Asset)
-			api.CreateAPI(apiconf, r.(*pat.Router))
+			web.CreateWeb(uiConf, r.(*pat.Router), assets.Asset)
+			api.CreateAPI(configMap, r.(*pat.Router))
 		}
-		go http.Listen(uiconf.UIBindAddr, assets.Asset, exitCh, cb)
+		go http.Listen(uiConf.UIBindAddr, assets.Asset, exitCh, cb)
 	} else {
 		cb1 := func(r gohttp.Handler) {
-			api.CreateAPI(apiconf, r.(*pat.Router))
+			api.CreateAPI(configMap, r.(*pat.Router))
 		}
 		cb2 := func(r gohttp.Handler) {
-			web.CreateWeb(uiconf, r.(*pat.Router), assets.Asset)
+			web.CreateWeb(uiConf, r.(*pat.Router), assets.Asset)
 		}
-		go http.Listen(apiconf.APIBindAddr, assets.Asset, exitCh, cb1)
-		go http.Listen(uiconf.UIBindAddr, assets.Asset, exitCh, cb2)
+		go http.Listen(configMap.APIBindAddr, assets.Asset, exitCh, cb1)
+		go http.Listen(uiConf.UIBindAddr, assets.Asset, exitCh, cb2)
 	}
-	go smtp.Listen(apiconf, exitCh)
+	go smtp.Listen(configMap, exitCh)
 
 	<-exitCh
 	log.Printf("Received exit signal")
